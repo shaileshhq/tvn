@@ -1,0 +1,1 @@
+<button class="btn btn-success btn-xs btn-icon-text" type="submit" title="{{$text}}" wire:loading.attr="disabled"><i class="bi bi-floppy btn-icon-prepend"></i> <span wire:loading.remove> {{$text}} </span> <span wire:loading> Please Wait </span> </button>

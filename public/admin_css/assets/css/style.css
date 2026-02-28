@@ -1,0 +1,44 @@
+.card-box1{
+    border-left: .25rem solid #4e73df !important;
+}
+.card-box2{
+border-left: .25rem solid #e74a3b !important;
+}
+.card-box3{
+    border-left: .25rem solid #1cc88a !important;
+}
+.card-box4{
+    border-left: .25rem solid #f6c23e !important;
+}
+.icon .icon-1 i{
+    font-size:25px;
+    line-height: 25px;
+    color:#dddfeb;
+    background: #4e73df;
+    border-radius: 100%;
+    padding: 10px 12px;
+}
+.icon .icon-2 i{
+    font-size:25px;
+    line-height: 25px;
+    color:#dddfeb;
+    background: #e74a3b;
+    border-radius: 100%;
+    padding: 10px 12px;
+}
+.icon .icon-3 i{
+    font-size:25px;
+    line-height: 25px;
+    color:#dddfeb;
+    background: #1cc88a;
+    border-radius: 100%;
+    padding: 10px 12px;
+}
+.icon .icon-4 i{
+    font-size:25px;
+    line-height: 25px;
+    color:#dddfeb;
+    background: #f6c23e;
+    border-radius: 100%;
+    padding: 10px 12px;
+}

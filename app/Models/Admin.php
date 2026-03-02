@@ -15,7 +15,8 @@ class Admin extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'phone'
+        'phone',
+        'role_id',
     ];
 
     protected $hidden = [
@@ -28,4 +29,30 @@ class Admin extends Authenticatable
         'phone_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    /**
+     * Check if admin has permission for a specific page
+     */
+    public function hasPagePermission($pageSlug)
+    {
+        // If no role assigned, deny access
+        if (!$this->role) {
+            return false;
+        }
+
+        return $this->role->hasPermission($pageSlug);
+    }
+
+    /**
+     * Check if admin is Super Admin
+     */
+    public function isSuperAdmin()
+    {
+        return $this->role && $this->role->name === 'Super Admin';
+    }
 }

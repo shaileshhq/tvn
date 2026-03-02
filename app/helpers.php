@@ -42,3 +42,28 @@ if(!function_exists('timeFormat')){
         return date('h:i A', strtotime($time));
     }
 }
+
+/**
+ * Check if logged in admin has permission for a page
+ */
+if (!function_exists('adminCan')) {
+    function adminCan($pageSlug) {
+        $admin = auth()->guard('admin')->user();
+        if (!$admin) return false;
+        if ($admin->isSuperAdmin()) return true;
+        return $admin->hasPagePermission($pageSlug);
+    }
+}
+
+/**
+ * Check if logged in admin has permission for any of the given pages
+ */
+if (!function_exists('adminCanAny')) {
+    function adminCanAny($pageSlugs = []) {
+        foreach ($pageSlugs as $slug) {
+            if (adminCan($slug)) return true;
+        }
+        return false;
+    }
+}
+

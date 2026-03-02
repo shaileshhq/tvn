@@ -103,6 +103,7 @@
                                     <li><a href="{{ route('front.eleven') }}">Form 11th Class</a></li>
                                     <li><a href="{{ route('front.guideline') }}">Addmission Guidelines</a></li>
                                     <li><a href="{{ route('front.tc-form') }}">TC Form</a></li>
+                                    <li><a href="{{ route('front.check-tc') }}">Check TC</a></li>
                                     <li><a href="{{ asset('front/images/lkg-to-2-addmission-form.pdf') }}">Addmission
                                             Form in LKG to 2</a></li>
                                 </ul>

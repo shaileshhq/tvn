@@ -42,6 +42,8 @@ Route::get('guideline',[FrontController::class, 'guideline'])->name('front.guide
 Route::get('tc-form',[FrontController::class, 'tcform'])->name('front.tc-form');
 Route::post('tcform-store',[FrontController::class, 'tcformStore'])->name('front.tcformStore');
 
+Route::get('check-tc',[FrontController::class, 'checkTc'])->name('front.check-tc');
+
 //info corner
 Route::get('timing',[FrontController::class, 'timing'])->name('front.timing');
 Route::get('transport',[FrontController::class, 'transport'])->name('front.transport');

@@ -154,6 +154,12 @@
                         </a>
                     </li>
                     <li
+                        class="nav-item {{ isActiveRoute(['admin.tc-upload.index', 'admin.tc-upload.create', 'admin.tc-upload.edit']) ? 'active' : '' }}">
+                        <a href="{{ route('admin.tc-upload.index') }}" class="nav-link" wire:navigate>
+                            <span class="link-title">TC Upload</span>
+                        </a>
+                    </li>
+                    <li
                         class="nav-item {{ isActiveRoute(['admin.document.index', 'admin.document.create', 'admin.document.edit']) ? 'active' : '' }}">
                         <a href="{{ route('admin.document.index') }}" class="nav-link" wire:navigate>
                             <span class="link-title">M Documents</span>

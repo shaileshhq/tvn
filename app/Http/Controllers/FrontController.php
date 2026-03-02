@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\Event;
 use App\Models\Slider;
 use App\Models\TcForm;
+use App\Models\TcUpload;
 use App\Models\enquiry;
 use App\Models\Gallery;
 use App\Models\Teacher;
@@ -294,6 +295,14 @@ class FrontController extends Controller
 
         $data->save();
         return redirect()->route('front.tc-form')->with('success', 'Data submitted succesfully');
+    }
+    public function checkTc(Request $request)
+    {
+        $tc_data = null;
+        if($request->tc_no){
+            $tc_data = TcUpload::where('tc_no', $request->tc_no)->where('status', 1)->first();
+        }
+        return view('frontend.addmission.check_tc', compact('tc_data'), ['page_title' => 'Check TC']);
     }
     public function timing(Request $request)
     {

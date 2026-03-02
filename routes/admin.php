@@ -78,6 +78,11 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('tc-form/create', AdminRoot\TcForm\Create::class)->name('tc-form.create');
     Route::get('tc-form/edit/{id}', AdminRoot\TcForm\Edit::class)->name('tc-form.edit');
 
+    //TC Upload
+    Route::get('tc-upload', AdminRoot\TcUpload\Index::class)->name('tc-upload.index');
+    Route::get('tc-upload/create', AdminRoot\TcUpload\Create::class)->name('tc-upload.create');
+    Route::get('tc-upload/edit/{id}', AdminRoot\TcUpload\Edit::class)->name('tc-upload.edit');
+
     //Merit List
     Route::get('merit-list', AdminRoot\MeritList\Index::class)->name('merit-list.index');
     Route::get('merit-list/create', AdminRoot\MeritList\Create::class)->name('merit-list.create');

@@ -8,18 +8,18 @@
     <title>{{ env('app_name') }}</title>
     <!-- Favicon -->
     @if (websiteSetupValue('favicon'))
-        <link rel="shortcut icon" href="{{ asset('storage/website_setup/' . websiteSetupValue('favicon')) }}" />
+        <link rel="shortcut icon" href="/storage/website_setup/{{ websiteSetupValue('favicon') }}" />
     @else
-        <link rel="shortcut icon" href="{{ asset('assets/img/favicon.ico') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
     @endif
     <!-- Font awesome -->
-    <link href="{{ asset('assets/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="/assets/css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
-    <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
     <!-- Slick slider -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="/assets/css/slick.css">
     <!-- Main style sheet -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Poppins:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet'
@@ -101,8 +101,8 @@
     @php
         $modalImage = websiteSetupValue('modal_image');
         $endDate = websiteSetupValue('end_date');
-        $isHomePage = request()->routeIs('front.index');
-        $shouldShow = $isHomePage && $modalImage && (!$endDate || $endDate >= date('Y-m-d'));
+        $isHomePage = request()->is('/');
+        $shouldShow = true; // FORCE SHOW FOR DEBUGGING
     @endphp
 
     @if ($shouldShow)
@@ -111,7 +111,7 @@
                 <div class="modal-content">
                     <button type="button" class="btn-close-modal" data-dismiss="modal">×</button>
                     <a href="{{ websiteSetupValue('modal_url') ?: '#' }}" target="_blank">
-                        <img src="{{ asset('storage/website_setup/' . websiteSetupValue('modal_image')) }}"
+                        <img src="/storage/website_setup/{{ websiteSetupValue('modal_image') }}"
                             alt="Announcement">
                     </a>
                 </div>
@@ -119,16 +119,18 @@
         </div>
     @endif
 
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/slick.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/waypoints.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('assets/js/jquery.counterup.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/assets/js/slick.js"></script>
+    <script type="text/javascript" src="/assets/js/waypoints.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.counterup.js"></script>
+    <script src="/assets/js/custom.js"></script>
     <script>
         $(document).ready(function() {
+            console.log("Modal debug: shouldShow =", "{{ $shouldShow ? 'true' : 'false' }}");
             @if ($shouldShow)
                 setTimeout(function() {
+                    console.log("Modal debug: Attempting to show modal");
                     $('#global-modal').modal('show');
                 }, 1000);
             @endif

@@ -15,37 +15,8 @@
 
         .trophy img:hover {
             opacity: 1;
-            -webkit-filter: none;
-            filter: none;
-        }
-
-        .modal-body {
-            height: 400px;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .modal-body img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-            /* Ensure image fits within the modal body */
-        }
-
-        body.modal-open {
-            overflow: hidden !important;
-            /* Prevent website page scrolling when modal is open */
-        }
-
-        .btn-close {
-            position: absolute;
-            top: 0px;
-            right: 0;
-            background: transparent;
-            color: #fff;
-            border: 1px solid #fff;
-        }
     </style>
+    
     <!-- Start Slider -->
     <section id="mu-slider">
         @if ($sliders->count() > 0)
@@ -434,43 +405,4 @@
         </div>
     </section>
     
-    @if (websiteSetupValue('end_date') >= date('Y-m-d'))
-        <div class="modal fade" id="global-modal" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content bg-transparent border-0">
-                    <button type="button" class="btn-close m-2 p-2 rounded-circle" data-bs-dismiss="modal"
-                        aria-label="Close"> X </button>
-                    <a href="{{ websiteSetupValue('modal_url') }}">
-                        <img src="{{ asset('storage/website_setup/' . websiteSetupValue('modal_image')) }}"
-                            alt="Modal Image" class="img-fluid"
-                            onerror="this.onerror=null; this.src='{{ asset('front/images/placeholder.png') }}'" />
-                    </a>
-                </div>
-            </div>
-        </div>
-    @endif
-    {{-- <div class="modal fade" id="global-modal" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <!--Modal Content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"> X </span>
-                    </button>
-                </div>
-                <div class="modal-body" style="padding: 0;">
-                    <a href="#" class="text-center">
-                        <img src="{{ asset('storage/website_setup/' . websiteSetupValue('modal_image')) }}"
-                            alt=""
-                            onerror="this.onerror=null; this.src='{{ asset('front/images/placeholder.png') }}'"
-                            height="400" />
-                    </a>
-                </div>
-                <div class="modal-footer">
-                    <a href="{{ websiteSetupValue('modal_url') }}"
-                        class="text-center">{{ websiteSetupValue('modal_url') }}</a>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 @endsection

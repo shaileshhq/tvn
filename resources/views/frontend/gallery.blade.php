@@ -1,5 +1,20 @@
 @extends('frontend.layout.app')
+
 @section('content')
+
+    <style>
+        .pagination {
+            justify-content: center;
+        }
+
+        .pagination li a,
+        .pagination li span {
+            padding: 8px 14px;
+            margin: 0 3px;
+            border-radius: 4px;
+        }
+    </style>
+
     <!-- Page breadcrumb -->
     <section id="mu-page-breadcrumb">
         <div class="container">
@@ -7,8 +22,12 @@
                 <div class="col-md-12">
                     <div class="mu-page-breadcrumb-area">
                         <h2>Photo Gallery Tulsi Vidya Niketan (TVN)</h2>
+
                         <ol class="breadcrumb">
-                            <li><a href="{{ route('front.index') }}">Home</a></li>
+                            <li>
+                                <a href="{{ route('front.index') }}">Home</a>
+                            </li>
+
                             <li class="active">Photo Gallery</li>
                         </ol>
                     </div>
@@ -24,31 +43,57 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mu-gallery-area">
+
                         <div class="mu-gallery-content">
                             <div class="mu-gallery-body">
+
                                 <ul id="mixit-container" class="row">
+
                                     @foreach ($gallery_data as $gallery)
                                         <li class="col-md-4 col-sm-6 col-xs-12">
+
                                             <div class="mu-single-gallery">
                                                 <div class="mu-single-gallery-item">
+
                                                     <div class="mu-single-gallery-img">
                                                         <img alt="img" src="{{ asset('storage/' . $gallery->image) }}">
                                                     </div>
+
                                                     <div class="mu-single-gallery-info">
                                                         <div class="mu-single-gallery-info-inner">
-                                                            <h4>{{ $gallery->title }}</h4>
-                                                            <a href="#" class="mu-search-icon fancybox">
+
+                                                            <h4>
+                                                                {{ $gallery->title }}
+                                                            </h4>
+
+                                                            <a href="{{ asset('storage/' . $gallery->image) }}"
+                                                                class="mu-search-icon fancybox">
+
                                                                 <span class="fa fa-eye"></span>
                                                             </a>
+
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </div>
+
                                         </li>
                                     @endforeach
+
                                 </ul>
+
+                                <!-- Pagination -->
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        {{ $gallery_data->links() }}
+                                    </div>
+                                </div>
+                                <!-- End Pagination -->
+
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -58,20 +103,38 @@
 
     <!-- Start Search Box -->
     <div id="mu-search">
-        <button class="mu-search-close"><span class="fa fa-close"></span></button>
+
+        <button class="mu-search-close">
+            <span class="fa fa-close"></span>
+        </button>
+
         <div class="container">
             <div class="row">
+
                 <div class="col-md-12">
+
                     <div class="mu-image">
-                        <button class="mu-prev"><span class="fa fa-arrow-left"></span></button>
-                        <button class="mu-next"><span class="fa fa-arrow-right"></span></button>
+
+                        <button class="mu-prev">
+                            <span class="fa fa-arrow-left"></span>
+                        </button>
+
+                        <button class="mu-next">
+                            <span class="fa fa-arrow-right"></span>
+                        </button>
+
                         <img src="" alt="Image">
+
                     </div>
+
                 </div>
+
             </div>
         </div>
+
     </div>
     <!-- End Search Box -->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 @endsection

@@ -100,9 +100,10 @@
     <!-- Global Modal -->
     @php
         $modalImage = websiteSetupValue('modal_image');
-        $endDate = websiteSetupValue('end_date');
-        $isHomePage = request()->is('/');
-        $shouldShow = true; // FORCE SHOW FOR DEBUGGING
+        $modalUrl = websiteSetupValue('modal_url');
+
+        // Show only if image exists
+        $shouldShow = !empty($modalImage);
     @endphp
 
     @if ($shouldShow)
@@ -110,15 +111,14 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <button type="button" class="btn-close-modal" data-dismiss="modal">×</button>
-                    <a href="{{ websiteSetupValue('modal_url') ?: '#' }}" target="_blank">
-                        <img src="/storage/website_setup/{{ websiteSetupValue('modal_image') }}"
-                            alt="Announcement">
+
+                    <a href="{{ $modalUrl ?: '#' }}" target="_blank">
+                        <img src="/storage/website_setup/{{ $modalImage }}" alt="Announcement">
                     </a>
                 </div>
             </div>
         </div>
     @endif
-
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script type="text/javascript" src="/assets/js/slick.js"></script>
@@ -126,16 +126,16 @@
     <script type="text/javascript" src="/assets/js/jquery.counterup.js"></script>
     <script src="/assets/js/custom.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             console.log("Modal debug: shouldShow =", "{{ $shouldShow ? 'true' : 'false' }}");
             @if ($shouldShow)
-                setTimeout(function() {
+                setTimeout(function () {
                     console.log("Modal debug: Attempting to show modal");
                     $('#global-modal').modal('show');
                 }, 1000);
             @endif
         });
-        $('.btn-close-modal').click(function() {
+        $('.btn-close-modal').click(function () {
             $('#global-modal').modal('hide');
         });
     </script>

@@ -13,7 +13,7 @@ class Index extends Component
     public $page_title = 'Gallery';
     public function render()
     {
-        $list = Gallery::paginate(getPaginate());
+        $list = Gallery::latest()->paginate(getPaginate());
         return view('livewire.admin.gallery.index', compact('list'))->layout('admin.layouts.app');
     }
     public function updateStatus($id)

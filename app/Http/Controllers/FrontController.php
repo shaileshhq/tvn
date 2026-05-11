@@ -30,12 +30,12 @@ class FrontController extends Controller
     {
         $sliders = Slider::where('status', '1')->get();
         $teachers = Teacher::where('status', '1')->get();
-        $events = Event::where('status','1')->get();
+        $events = Event::where('status', '1')->get();
         $news_list = News::where('status', '1')->get();
-        $testimonials = Testimonial::where('status','1')->get();
-        $galleries = Gallery::where('status','1')->get();
-        $achievement =StudentAchievement::where('status','1')->get();
-        return view('frontend.index',compact('sliders','teachers','events', 'news_list', 'testimonials', 'galleries', 'achievement'), ['page_title' => 'Home']);
+        $testimonials = Testimonial::where('status', '1')->get();
+        $galleries = Gallery::where('status', '1')->get();
+        $achievement = StudentAchievement::where('status', '1')->get();
+        return view('frontend.index', compact('sliders', 'teachers', 'events', 'news_list', 'testimonials', 'galleries', 'achievement'), ['page_title' => 'Home']);
     }
 
     public function about(Request $request)
@@ -53,12 +53,12 @@ class FrontController extends Controller
     public function teacher(Request $request)
     {
         $teacher_list = Teacher::where('status', '1')->get();
-        return view('frontend.about.teachers',compact('teacher_list'), ['page_title' => 'Our Teacher']);
+        return view('frontend.about.teachers', compact('teacher_list'), ['page_title' => 'Our Teacher']);
     }
     public function committee(Request $request)
     {
         $committee_data = Committee::where('status', '1')->get();
-        return view('frontend.about.committee',compact('committee_data'), ['page_title' => 'Our committee']);
+        return view('frontend.about.committee', compact('committee_data'), ['page_title' => 'Our committee']);
     }
     public function infrastructure(Request $request)
     {
@@ -69,34 +69,35 @@ class FrontController extends Controller
         $class = ClassMaster::where('status', '1')->get();
         return view('frontend.addmission.nurserynine', compact('class'), ['page_title' => 'Admission nursery-nine']);
     }
-    public function nurserynineStore(Request $request){
+    public function nurserynineStore(Request $request)
+    {
         request()->validate([
-            'class'                 => 'required',
-            'session'               => 'required',
-            'name'                  => 'required',
-            'gender'                => 'required',
-            'blood'                 => 'required',
-            'date_of_birth'         => 'required',
-            'caste'                 => 'required',
-            'mother_name'           => 'required',
-            'father_name'           => 'required',
-            'mother_occupation'     => 'required',
-            'father_occupation'     => 'required',
+            'class' => 'required',
+            'session' => 'required',
+            'name' => 'required',
+            'gender' => 'required',
+            'blood' => 'required',
+            'date_of_birth' => 'required',
+            'caste' => 'required',
+            'mother_name' => 'required',
+            'father_name' => 'required',
+            'mother_occupation' => 'required',
+            'father_occupation' => 'required',
             'mother_office_address' => 'required',
-            'father_offic_address'  => 'required',
-            'local_address'         => 'required',
-            'cbsc_affilated'        => 'required',
-            'not_affilated'         => 'required',
-            'last_school'           => 'required',
-            'result'                => 'required',
-            'percentage'            => 'required',
-            'subject'               => 'required',
-            'certificate'           => 'required',
-            'tc_date'               => 'required',
-            'mother_tongue'         => 'required',
-            'home_town'             => 'required',
-            'image'                 => 'required|image|mimes:jpeg,png,jpg,gif',
-            'signature'             =>'required|image|mimes:jpeg,png,jpg,gif',
+            'father_offic_address' => 'required',
+            'local_address' => 'required',
+            'cbsc_affilated' => 'required',
+            'not_affilated' => 'required',
+            'last_school' => 'required',
+            'result' => 'required',
+            'percentage' => 'required',
+            'subject' => 'required',
+            'certificate' => 'required',
+            'tc_date' => 'required',
+            'mother_tongue' => 'required',
+            'home_town' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'signature' => 'required|image|mimes:jpeg,png,jpg,gif',
 
         ]);
 
@@ -140,49 +141,50 @@ class FrontController extends Controller
     {
         return view('frontend.addmission.eleven', ['page_title' => ' Admission Eleven']);
     }
-    public function elevenStore(Request $request){
+    public function elevenStore(Request $request)
+    {
         request()->validate([
-            'stream'            => 'required',
-            'roll_no'           => 'required',
+            'stream' => 'required',
+            'roll_no' => 'required',
             'date_of_admission' => 'required',
-            'class'             => 'required',
-            'name'              => 'required',
-            'date_of_birth'     => 'required',
-            'blood'             => 'required',
-            'caste'             => 'required',
-            'nationality'       => 'required',
-            'mother_tongue'     => 'required',
-            'mother_name'       => 'required',
-            'father_name'       => 'required',
-            'g_name'            => 'required',
-            'intro_name'        => 'required',
+            'class' => 'required',
+            'name' => 'required',
+            'date_of_birth' => 'required',
+            'blood' => 'required',
+            'caste' => 'required',
+            'nationality' => 'required',
+            'mother_tongue' => 'required',
+            'mother_name' => 'required',
+            'father_name' => 'required',
+            'g_name' => 'required',
+            'intro_name' => 'required',
             'mother_occupation' => 'required',
             'father_occupation' => 'required',
-            'g_occupation'      => 'required',
-            'intro_occupation'  => 'required',
+            'g_occupation' => 'required',
+            'intro_occupation' => 'required',
             'mother_office_address' => 'required',
             'father_office_address' => 'required',
-            'g_address'             => 'required',
-            'intro_address'         => 'required',
+            'g_address' => 'required',
+            'intro_address' => 'required',
             'mother_permanent_address' => 'required',
             'father_permanent_address' => 'required',
-            'g_permanent_address'      => 'required',
-            'intro_permanent_address'  => 'required',
-            'mother_number'        => 'required',
-            'father_number'        => 'required',
-            'g_number'             => 'required',
-            'intro_number'         => 'required',
+            'g_permanent_address' => 'required',
+            'intro_permanent_address' => 'required',
+            'mother_number' => 'required',
+            'father_number' => 'required',
+            'g_number' => 'required',
+            'intro_number' => 'required',
             'last_school_attended' => 'required',
-            'last_school_studing'  => 'required',
-            'instruction'   => 'required',
-            'percentage'    => 'required',
-            'tc_date'       => 'required',
-            'home_town'     => 'required',
-            'result'        => 'required',
+            'last_school_studing' => 'required',
+            'instruction' => 'required',
+            'percentage' => 'required',
+            'tc_date' => 'required',
+            'home_town' => 'required',
+            'result' => 'required',
             'countersigned' => 'required',
-            'certificate'   => 'required',
-            'image'         => 'required|image|mimes:jpeg,png,jpg,gif',
-            'signature'     => 'required|image|mimes:jpeg,png,jpg,gif',
+            'certificate' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'signature' => 'required|image|mimes:jpeg,png,jpg,gif',
 
         ]);
 
@@ -246,52 +248,53 @@ class FrontController extends Controller
     {
         return view('frontend.addmission.tcform', ['page_title' => ' TC Form']);
     }
-    public function tcformStore(Request $request){
+    public function tcformStore(Request $request)
+    {
         request()->validate([
-            'name'               => 'required',
-            'mother_name'        => 'required',
-            'father_name'        => 'required',
-            'nationality'        => 'required',
-            'caste'              => 'required',
-            'date_of_birth'      => 'required',
-            'result'             => 'required',
-            'subject'            => 'required',
+            'name' => 'required',
+            'mother_name' => 'required',
+            'father_name' => 'required',
+            'nationality' => 'required',
+            'caste' => 'required',
+            'date_of_birth' => 'required',
+            'result' => 'required',
+            'subject' => 'required',
             'last_class_studied' => 'required',
-            'school_result'      => 'required',
-            'qualified'          => 'required',
-            'full_ammount'       => 'required',
-            'receipt'            => 'required',
-            'ncc'                => 'required',
-            'date_name_struck'   => 'required',
-            'full_count'         => 'required',
-            'full_present'       => 'required',
-            'reasion'            => 'required',
-            'gen_conduct'        => 'required',
-            'remark'             => 'required',
-            'issue_date'         => 'required'
+            'school_result' => 'required',
+            'qualified' => 'required',
+            'full_ammount' => 'required',
+            'receipt' => 'required',
+            'ncc' => 'required',
+            'date_name_struck' => 'required',
+            'full_count' => 'required',
+            'full_present' => 'required',
+            'reasion' => 'required',
+            'gen_conduct' => 'required',
+            'remark' => 'required',
+            'issue_date' => 'required'
         ]);
         $data = new TcForm;
         $data->name = $request->name;
         $data->mother_name = $request->mother_name;
-         $data->father_name = $request->father_name;
-         $data->nationality = $request->name;
-         $data->caste = $request->caste;
-         $data->date_of_birth = $request->date_of_birth;
-         $data->result = $request->result;
-         $data->subject = $request->subject;
-         $data->last_class_studied = $request->last_class_studied;
-         $data->school_result = $request->school_result;
-         $data->qualified = $request->qualified;
-         $data->full_ammount = $request->full_ammount;
-         $data->receipt = $request->receipt;
-         $data->ncc = $request->ncc;
-         $data->date_name_struck = $request->date_name_struck;
-         $data->full_count = $request->full_count;
-         $data->full_present = $request->full_present;
-         $data->reasion = $request->reasion;
-         $data->gen_conduct = $request->gen_conduct;
-         $data->remark = $request->remark;
-         $data->issue_date = $request->issue_date;
+        $data->father_name = $request->father_name;
+        $data->nationality = $request->name;
+        $data->caste = $request->caste;
+        $data->date_of_birth = $request->date_of_birth;
+        $data->result = $request->result;
+        $data->subject = $request->subject;
+        $data->last_class_studied = $request->last_class_studied;
+        $data->school_result = $request->school_result;
+        $data->qualified = $request->qualified;
+        $data->full_ammount = $request->full_ammount;
+        $data->receipt = $request->receipt;
+        $data->ncc = $request->ncc;
+        $data->date_name_struck = $request->date_name_struck;
+        $data->full_count = $request->full_count;
+        $data->full_present = $request->full_present;
+        $data->reasion = $request->reasion;
+        $data->gen_conduct = $request->gen_conduct;
+        $data->remark = $request->remark;
+        $data->issue_date = $request->issue_date;
 
         $data->save();
         return redirect()->route('front.tc-form')->with('success', 'Data submitted succesfully');
@@ -299,7 +302,7 @@ class FrontController extends Controller
     public function checkTc(Request $request)
     {
         $tc_data = null;
-        if($request->tc_no){
+        if ($request->tc_no) {
             $tc_data = TcUpload::where('tc_no', $request->tc_no)->where('status', 1)->first();
         }
         return view('frontend.addmission.check_tc', compact('tc_data'), ['page_title' => 'Check TC']);
@@ -318,24 +321,32 @@ class FrontController extends Controller
     }
     public function gallery(Request $request)
     {
-        $gallery_data =Gallery::where('status', '1')->get();
-        return view('frontend.gallery',compact('gallery_data'), ['page_title' => 'Photo Gallery']);
+        $gallery_data = Gallery::where('status', '1')
+            ->latest()
+            ->paginate(20);
+
+        return view(
+            'frontend.gallery',
+            compact('gallery_data'),
+            ['page_title' => 'Photo Gallery']
+        );
     }
     public function news(Request $request)
     {
         $news_list = News::where('status', '1')->get();
-        return view('frontend.news',compact('news_list'), ['page_title' => 'News']);
+        return view('frontend.news', compact('news_list'), ['page_title' => 'News']);
     }
 
-    public function all_news(){
+    public function all_news()
+    {
         $news = News::where('status', '1')->paginate(10);
-        return view('frontend.all_news',compact('news'), ['page_title' => 'All News']);
+        return view('frontend.all_news', compact('news'), ['page_title' => 'All News']);
     }
 
     public function newsdetail($slug)
     {
         $news_data = News::where('slug', $slug)->first();
-        return view('frontend.newsdetail',compact('news_data'), ['page_title' => 'News Detail']);
+        return view('frontend.newsdetail', compact('news_data'), ['page_title' => 'News Detail']);
     }
 
     public function eventdetail($slug)
@@ -373,13 +384,13 @@ class FrontController extends Controller
     {
         $documents = SchoolDocument::where('status', '1')->orderBy('id', 'desc')->get();
         $grouped_documents = $documents->groupBy('category');
-        return view('frontend.document',compact('grouped_documents'), ['page_title' => 'School Document']);
+        return view('frontend.document', compact('grouped_documents'), ['page_title' => 'School Document']);
     }
 
     public function ImportantNotice(Request $request)
     {
         $pdf_list = PDFUpload::where('status', 1)->paginate(getPaginate());
-        return view('frontend.important_notice',compact('pdf_list'), ['page_title' => 'Important Notice']);
+        return view('frontend.important_notice', compact('pdf_list'), ['page_title' => 'Important Notice']);
     }
 
 }
